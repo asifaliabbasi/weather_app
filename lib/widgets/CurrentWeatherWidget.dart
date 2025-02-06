@@ -6,8 +6,7 @@ class CurrentWeatherWidget extends StatefulWidget {
   final WeatherDataCurrent weatherDataCurrent;
 
 
-  const CurrentWeatherWidget({Key? key, required this.weatherDataCurrent})
-      : super(key: key);
+  const CurrentWeatherWidget({super.key, required this.weatherDataCurrent});
 
   @override
   State<CurrentWeatherWidget> createState() => _CurrentWeatherWidgetState();
@@ -28,7 +27,11 @@ class _CurrentWeatherWidgetState extends State<CurrentWeatherWidget> {
   @override
   Widget build(BuildContext context) {
 
-    return Column(
+    return Container(
+        decoration: BoxDecoration(
+        image: DecorationImage(image: AssetImage('assets/icons/OLQCP10.jpg'),fit: BoxFit.contain)
+    ),
+    child:Column(
       children: [
         //tempeture area
         tempeatureAreaWidget(),
@@ -38,88 +41,88 @@ class _CurrentWeatherWidgetState extends State<CurrentWeatherWidget> {
         ),
         // more details - windspeed, humidity, clouds
         currentWeatherMoreDetailsWidget(),
-      ],
+      ],)
     );
   }
 
   Widget currentWeatherMoreDetailsWidget() {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Container(
-              height: 60,
-              width: 60,
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                  color: CustomColors.cardColor,
-                  borderRadius: BorderRadius.circular(15)),
-              child: Image.asset("assets/icons/windspeed.png"),
-            ),
-            Container(
-              height: 60,
-              width: 60,
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                  color: CustomColors.cardColor,
-                  borderRadius: BorderRadius.circular(15)),
-              child: Image.asset("assets/icons/clouds.png"),
-            ),
-            Container(
-              height: 60,
-              width: 60,
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                  color: CustomColors.cardColor,
-                  borderRadius: BorderRadius.circular(15)),
-              child: Image.asset("assets/icons/humidity.png"),
-            ),
-          ],
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            SizedBox(
-              height: 20,
-              width: 60,
-              child: Text(
-                "${widget.weatherDataCurrent.current.windSpeed}km/h",
-                style: const TextStyle(fontSize: 12),
-                textAlign: TextAlign.center,
+    return  Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                height: 60,
+                width: 60,
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                    color: CustomColors.cardColor,
+                    borderRadius: BorderRadius.circular(15)),
+                child: Image.asset("assets/icons/windspeed.png"),
               ),
-            ),
-            SizedBox(
-              height: 20,
-              width: 60,
-              child: Text(
-                "${widget.weatherDataCurrent.current.clouds}%",
-                style: const TextStyle(fontSize: 12),
-                textAlign: TextAlign.center,
+              Container(
+                height: 60,
+                width: 60,
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                    color: CustomColors.cardColor,
+                    borderRadius: BorderRadius.circular(15)),
+                child: Image.asset("assets/icons/clouds.png"),
               ),
-            ),
-            SizedBox(
-              height: 20,
-              width: 60,
-              child: Text(
-                "${widget.weatherDataCurrent.current.humidity}%",
-                style: const TextStyle(fontSize: 12),
-                textAlign: TextAlign.center,
+              Container(
+                height: 60,
+                width: 60,
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                    color: CustomColors.cardColor,
+                    borderRadius: BorderRadius.circular(15)),
+                child: Image.asset("assets/icons/humidity.png"),
               ),
-            )
-          ],
-        )
-      ],
+            ],
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+      
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              SizedBox(
+                height: 20,
+                width: 60,
+                child: Text(
+                  "${widget.weatherDataCurrent.current.windSpeed}km/h",
+                  style: const TextStyle(fontSize: 12),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              SizedBox(
+                height: 20,
+                width: 60,
+                child: Text(
+                  "${widget.weatherDataCurrent.current.clouds}%",
+                  style: const TextStyle(fontSize: 12),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              SizedBox(
+                height: 20,
+                width: 60,
+                child: Text(
+                  "${widget.weatherDataCurrent.current.humidity}%",
+                  style: const TextStyle(fontSize: 12),
+                  textAlign: TextAlign.center,
+                ),
+              )
+            ],
+          )
+        ],
     );
   }
 
   Widget tempeatureAreaWidget() {
     var cTemp = widget.weatherDataCurrent.current.temp!;
-    var fTemp = widget.weatherDataCurrent.current.temp! * 5/9 + 32.toInt();
+    var fTemp = widget.weatherDataCurrent.current.temp! * 9/5 + 32.toInt();
 
     if(cTemp > 30){
       color = Colors.redAccent;

@@ -10,7 +10,7 @@ class GlobalController extends GetxController {
   // Create various variables
   late String city;
   late String province;
-  final RxBool _isLoading = false.obs;
+  final RxBool _isLoading = true.obs;
   final RxDouble _latitude = 0.0.obs;
   final RxDouble _longitude = 0.0.obs;
   final RxInt _currentIndex = 0.obs;

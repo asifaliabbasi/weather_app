@@ -22,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       body: SafeArea(
         child: Obx(() => globalController.checkLoading().isTrue
             ? Center(
@@ -37,7 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ))
             : Center(
+          
           child: ListView(
+            
             scrollDirection: Axis.vertical,
             children: [
               const SizedBox(

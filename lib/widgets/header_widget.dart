@@ -65,6 +65,8 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                             cityname.clear();
                             icon = Icons.search;
                             setState(() {
+                              globalController.update();
+                              globalController.getLocation();
                             });
                           }
 
@@ -86,7 +88,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
           child: Text(
             cityname.text.isEmpty?
             city:cityname.text.toUpperCase(),
-            style: const TextStyle(fontSize: 35, height: 2, fontFamily: 'common', fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 30, height: 2, fontFamily: 'common', fontWeight: FontWeight.bold),
           ),
         ),
         Container(
