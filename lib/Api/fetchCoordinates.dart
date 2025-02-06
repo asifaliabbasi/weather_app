@@ -26,7 +26,7 @@ class Coordinates {
 }
 
 Future<Coordinates> getCoordinates(String cityName) async {
-  final url = Uri.parse('https://geocode.maps.co/search?q=$cityName&api_key=67a350f6660e4365956645pow45c6c7');
+  final url = Uri.parse('https://geocode.maps.co/search?q=$cityName&api_key=$yourapikey');
 
   final response = await http.get(url);
 
